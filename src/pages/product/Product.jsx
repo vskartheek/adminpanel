@@ -1,43 +1,41 @@
 import React from 'react'
 import './product.css'
-import { Link } from 'react-router-dom'
-import Chart from '../../components/chart/Chart'
-import {productData} from '../../dummyData'
+import { Link,useLocation } from 'react-router-dom'
 import { Publish } from '@mui/icons-material'
 function Product() {
+  const location = useLocation();
+  const movie = location.state ? location.state.movie : {};
+  console.log(movie);
   return (
     <div className='product'>
     <div className="productTitleContainer">
-            <h1 className="productTitle">Product</h1>
+            <h1 className="productTitle">Movie</h1>
             <Link to='/newproduct'>
             <button className="productAddButton">Create</button>
             </Link>
         </div>       
         <div className="productTop">
-            <div className="productTopLeft">
-              <Chart  data={productData} dataKey="Sales" title="Sales Performance"/>
-            </div>
             <div className="productTopRight">
               <div className="productInfoTop">
-                <img src="https://www.apple.com/newsroom/images/product/airpods/standard/Apple-AirPods-Pro-2nd-gen-hero-220907_big.jpg.large.jpg" alt="" className="productInfoImg" />
-                <span className="productName">Apple Airpods</span>
+                <img src={movie.img} alt="" className="productInfoImg" />
+                <span className="productName">{movie.title}</span>
               </div>
               <div className="productInfoBottom">
                 <div className="productInfoItem">
                   <span className="productInfoKey">id: </span>
-                  <span className="productInfoValue">123</span>
+                  <span className="productInfoValue">{movie._id}</span>
                 </div>
                 <div className="productInfoItem">
-                  <span className="productInfoKey">Sales: </span>
-                  <span className="productInfoValue">123</span>
+                  <span className="productInfoKey">genre </span>
+                  <span className="productInfoValue">{movie.genre}</span>
                 </div>
                 <div className="productInfoItem">
-                  <span className="productInfoKey">Active: </span>
-                  <span className="productInfoValue">yes</span>
+                  <span className="productInfoKey">year</span>
+                  <span className="productInfoValue">{movie.year}</span>
                 </div>
                 <div className="productInfoItem">
-                  <span className="productInfoKey">in stock: </span>
-                  <span className="productInfoValue">no</span>
+                  <span className="productInfoKey">limit</span>
+                  <span className="productInfoValue">{movie.limit}</span>
                 </div>
           
               </div>
@@ -46,22 +44,22 @@ function Product() {
         <div className="productBottom">
           <form  className="productForm">
               <div className="productFormLeft">
-                <label >Product Name</label>
-                <input type="text" placeholder='Apple AirPod' />
-                <label >In stock</label>
-                <select name="inStock" id="idStock">
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
-                </select>
-                <label >Active</label>
-                <select name="active" id="active">
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
-                </select>
+                <label >Movie Title</label>
+                <input type="text" placeholder={movie.title} />
+                <label >year</label>
+                <input type="text" placeholder={movie.year} />
+                <label >genre</label>
+                <input type="text" placeholder={movie.genre} />
+                <label >limit</label>
+                <input type="text" placeholder={movie.limit} />
+                <label >trailer</label>
+                <input type="file" placeholder={movie.trailer} />
+                <label >video</label>
+                <input type="file" placeholder={movie.video} />
               </div>
               <div className="productFormRight">
                 <div className="productUpload">
-                  <img src="https://www.apple.com/newsroom/images/product/airpods/standard/Apple-AirPods-Pro-2nd-gen-hero-220907_big.jpg.large.jpg" alt="" className="productUploadImg" />
+                  <img src={movie.img} alt="" className="productUploadImg" />
                 <label for="file">
                   <Publish/>
                 </label>

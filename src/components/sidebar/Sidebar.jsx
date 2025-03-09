@@ -1,5 +1,5 @@
 import React from "react";
-import { LineStyle, TrendingUp, Timeline, PermIdentity, Storefront, CurrencyRupee, BarChart, MailOutline, Feedback, ChatBubbleOutline, WorkOutline, Report } from "@mui/icons-material";
+import { LineStyle, TrendingUp, Timeline, PermIdentity, Storefront, CurrencyRupee, BarChart, MailOutline, Feedback, ChatBubbleOutline, WorkOutline, Report, PlayArrow, PlayCircleOutline, List } from "@mui/icons-material";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
 const Sidebar = () => {
@@ -30,16 +30,18 @@ const Sidebar = () => {
               <PermIdentity className="sidebarIcon" /> Users
             </li>
             </Link>
-            <Link to="/products" className="link">
+            <Link to="/movies" className="link">
             <li className="sidebarListItem">
-              <Storefront className="sidebarIcon" />
-              Products
+              <PlayCircleOutline className="sidebarIcon" />
+              Movies
             </li>
             </Link>
+            <Link to="/lists" className="link">
             <li className="sidebarListItem">
-              <CurrencyRupee className="sidebarIcon" />
-              Transactions
+              <List className="sidebarIcon" />
+              Lists
             </li>
+            </Link>
             <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />
               Reports
